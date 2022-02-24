@@ -6,13 +6,15 @@ const path = require('path')
 const data = require('./urls.json')
 
 function writeFile(cb) {
+    fs.writeFile(
     path.join(__dirname, "urls.json" ),
     JSON.stringify(data,null,2),
     err => {
         if(err) throw err
 
         cb(JSON.stringify({message: "ok"}))
-    }
+      }
+   )     
 }
 
 http.createServer((req, res) => {
